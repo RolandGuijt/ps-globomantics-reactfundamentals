@@ -1,16 +1,18 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+.logo {
+  height: 150px;
+  cursor: pointer;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.subtitle {
+  font-style: italic;
+  font-size: x-large;
+  color: coral;
 }
 
-* {
-  box-sizing: border-box;
+.themeFontColor {
+  color: coral;
+}
+
+tr {
+  cursor: pointer;
 }

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavigationContext } from "../pages/_app";
+import { NavigationContext } from "./navigation";
 import navValues from "../navValues";
 
 const Header = ({ subtitle }) => {

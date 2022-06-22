@@ -2,7 +2,7 @@ import { useContext } from "react";
 import currencyFormatter from "../helpers/currencyFormatter";
 import defaultPhoto from "../helpers/defaultPhoto";
 import useHouses from "../hooks/useHouses";
-import { NavigationContext } from "./_app";
+import { NavigationContext } from "./navigation";
 
 const House = () => {
   const houses = useHouses();

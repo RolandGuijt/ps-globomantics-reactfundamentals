@@ -12,7 +12,6 @@ const useHouses = () => {
     fetchHouses();
   }, []);
 
-  console.log(allHouses);
   return allHouses;
 };
 

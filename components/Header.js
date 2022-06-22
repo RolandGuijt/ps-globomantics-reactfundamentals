@@ -1,5 +1,3 @@
-import logo from "./GloboLogo.png";
-import Image from "next/Image";
 import { useContext } from "react";
 import { NavigationContext } from "../pages/_app";
 import navValues from "../navValues";
@@ -9,8 +7,8 @@ const Header = ({ subtitle }) => {
   return (
     <header className="row mb-4">
       <div className="col-5">
-        <Image
-          src={logo}
+        <img
+          src="/GloboLogo.png"
           className="logo"
           alt="logo"
           onClick={() => navigate(navValues.home)}

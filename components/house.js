@@ -2,18 +2,18 @@ import { useContext } from "react";
 import currencyFormatter from "../helpers/currencyFormatter";
 import defaultPhoto from "../helpers/defaultPhoto";
 import loadingStates from "../helpers/loadingStates";
-import useHouses from "../hooks/useHouses";
+import useHouse from "../hooks/useHouse";
 import { NavigationContext } from "./app";
+import Bids from "./bids";
 import LoadingIndicator from "./loadingIndicator";
 
 const House = () => {
-  const { houses, loadingState } = useHouses();
   const { navState } = useContext(NavigationContext);
+  const { house, loadingState } = useHouse(navState.param);
 
   if (loadingState !== loadingStates.loaded)
     return <LoadingIndicator loadingState={loadingState} />;
 
-  const house = houses.filter((h) => h.id === navState.param)[0];
   if (!house) return <div>House with id {navState.param} not found</div>;
   return (
     <div className="row">
@@ -43,6 +43,7 @@ const House = () => {
         <div className="row">
           <div className="col-12 mt-3">{house.description}</div>
         </div>
+        <Bids house={house} />
       </div>
     </div>
   );

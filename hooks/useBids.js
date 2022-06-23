@@ -1,27 +1,31 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import apiConfig from "../helpers/apiConfig";
 import loadingStates from "../helpers/loadingStates";
 
-const useHouses = () => {
-  const [houses, setHouses] = useState([]);
+const useBids = (houseId) => {
+  const [bids, setBids] = useState([]);
   const [loadingState, setLoadingState] = useState(loadingStates.isLoading);
 
   useEffect(() => {
-    const fetchHouses = async () => {
+    const fetchBids = async () => {
       setLoadingState(loadingStates.isLoading);
       try {
-        const rsp = await fetch(`${apiConfig.url}/houses`);
-        setHouses(await rsp.json());
+        const rsp = await fetch(`${apiConfig.url}/house/${houseId}/bids`);
+        setBids(await rsp.json());
         setLoadingState(loadingStates.loaded);
       } catch {
         setLoadingState(loadingStates.hasErrored);
       }
       await new Promise((resolve) => setTimeout(resolve, 1000));
     };
-    fetchHouses();
-  }, []);
+    fetchBids();
+  }, [houseId]);
 
-  return { houses, loadingState };
+  const addBid = (bid) => {
+    setBids([...bids, bid]);
+  };
+
+  return { bids, loadingState, addBid };
 };
 
-export default useHouses;
+export default useBids;

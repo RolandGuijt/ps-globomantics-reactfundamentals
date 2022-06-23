@@ -1,6 +1,6 @@
 const navValues = {
-  home: "home",
-  house: "house",
+  home: "Home",
+  house: "House",
 };
 
 export default navValues;

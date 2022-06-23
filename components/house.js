@@ -1,12 +1,18 @@
 import { useContext } from "react";
 import currencyFormatter from "../helpers/currencyFormatter";
 import defaultPhoto from "../helpers/defaultPhoto";
+import loadingStates from "../helpers/loadingStates";
 import useHouses from "../hooks/useHouses";
-import { NavigationContext } from "./navigation";
+import { NavigationContext } from "./app";
+import LoadingIndicator from "./loadingIndicator";
 
 const House = () => {
-  const houses = useHouses();
+  const { houses, loadingState } = useHouses();
   const { navState } = useContext(NavigationContext);
+
+  if (loadingState !== loadingStates.loaded)
+    return <LoadingIndicator loadingState={loadingState} />;
+
   const house = houses.filter((h) => h.id === navState.param)[0];
   if (!house) return <div>House with id {navState.param} not found</div>;
   return (

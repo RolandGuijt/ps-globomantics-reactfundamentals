@@ -5,8 +5,8 @@ export default function Document() {
     <Html>
       <Head>
         <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         />
         <link rel="stylesheet" href="css/globals.css" />
       </Head>

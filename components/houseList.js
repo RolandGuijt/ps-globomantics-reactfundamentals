@@ -1,12 +1,17 @@
 import useHouses from "../hooks/useHouses";
 import currencyFormatter from "../helpers/currencyFormatter";
 import { useContext } from "react";
-import { NavigationContext } from "./navigation";
-import navValues from "../navValues";
+import navValues from "../helpers/navValues";
+import { NavigationContext } from "./app";
+import loadingStates from "../helpers/loadingStates";
+import LoadingIndicator from "./loadingIndicator";
 
 const HouseList = () => {
-  const houses = useHouses();
+  const { houses, loadingState } = useHouses();
   const { navigate } = useContext(NavigationContext);
+
+  if (loadingState !== loadingStates.loaded)
+    return <LoadingIndicator loadingState={loadingState} />;
 
   return (
     <div>

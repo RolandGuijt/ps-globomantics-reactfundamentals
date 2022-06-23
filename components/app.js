@@ -1,18 +1,27 @@
-import { useContext } from "react";
 import Header from "../components/header";
-import Navigation, {
-  getComponent,
-  NavigationContext,
-} from "../components/navigation";
+import navValues from "../helpers/navValues";
+import React, { useState } from "react";
+import ComponentSelector from "./componentSelector";
+
+const NavigationContext = React.createContext({
+  navState: { current: navValues.home },
+  navigate: (_t, _p) => {},
+});
 
 const App = () => {
-  const { navState } = useContext(NavigationContext);
+  const [nav, setNav] = useState({
+    current: navValues.home,
+    param: undefined,
+  });
+  const navigate = (navTo, param) => setNav({ current: navTo, param });
+
   return (
-    <Navigation>
+    <NavigationContext.Provider value={{ navState: nav, navigate }}>
       <Header subtitle="Providing houses all over the world" />
-      {getComponent(navState.current)}
-    </Navigation>
+      <ComponentSelector currentNavLocation={nav.current} />
+    </NavigationContext.Provider>
   );
 };
 
+export { NavigationContext };
 export default App;

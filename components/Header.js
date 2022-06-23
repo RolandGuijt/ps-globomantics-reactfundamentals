@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { NavigationContext } from "./navigation";
-import navValues from "../navValues";
+import navValues from "../helpers/navValues";
+import { NavigationContext } from "./app";
 
 const Header = ({ subtitle }) => {
   const { navigate } = useContext(NavigationContext);

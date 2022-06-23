@@ -1,18 +1,26 @@
 import { useState, useEffect } from "react";
+import loadingStates from "../helpers/loadingStates";
 
 const useHouses = () => {
-  const [allHouses, setAllHouses] = useState([]);
+  const [houses, setHouses] = useState([]);
+  const [loadingState, setLoadingState] = useState(loadingStates.isLoading);
 
   useEffect(() => {
     const fetchHouses = async () => {
-      const rsp = await fetch("./houses.json");
-      const houses = await rsp.json();
-      setAllHouses(houses);
+      setLoadingState(loadingStates.isLoading);
+      try {
+        const rsp = await fetch("./houses.json");
+        setHouses(await rsp.json());
+      } catch {
+        setLoadingState(loadingStates.hasErrored);
+      }
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setLoadingState(loadingStates.loaded);
     };
     fetchHouses();
   }, []);
 
-  return allHouses;
+  return { houses, loadingState };
 };
 
 export default useHouses;

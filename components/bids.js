@@ -8,6 +8,7 @@ import LoadingIndicator from "./loadingIndicator";
 const Bids = ({ house }) => {
   const { bids, loadingState, addBid } = useBids(house.id);
   const postBid = usePostBid();
+  const [newBid, setNewBid] = useState(emptyBid);
 
   const emptyBid = {
     id: 0,
@@ -15,9 +16,6 @@ const Bids = ({ house }) => {
     bidder: "",
     amount: 0,
   };
-
-  const [newBid, setNewBid] = useState(emptyBid);
-  //const addBidMutation = useAddBid();
 
   if (loadingState !== loadingStates.loaded)
     return <LoadingIndicator loadingState={loadingState} />;

@@ -5,13 +5,11 @@ import ComponentPicker from "./componentPicker";
 
 const NavigationContext = React.createContext({
   navState: { current: navValues.home },
-  navigate: (_t, _p) => {},
 });
 
 const App = () => {
   const [nav, setNav] = useState({
     current: navValues.home,
-    param: undefined,
   });
   const navigate = (navTo, param) => setNav({ current: navTo, param });
 

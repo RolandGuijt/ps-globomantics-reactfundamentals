@@ -3,7 +3,7 @@ import apiConfig from "../helpers/apiConfig";
 import loadingStates from "../helpers/loadingStates";
 
 const useHouse = (id) => {
-  const [house, setHouse] = useState({});
+  const [house, setHouse] = useState();
   const [loadingState, setLoadingState] = useState(loadingStates.isLoading);
 
   useEffect(() => {

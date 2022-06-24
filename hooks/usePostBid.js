@@ -4,7 +4,7 @@ const usePostBid = () => {
   return {
     post: (bid) => {
       const postBid = async () => {
-        const rsp = await fetch(`${apiConfig.url}/house/${bid.houseId}/bids`, {
+        await fetch(`${apiConfig.url}/house/${bid.houseId}/bids`, {
           method: "POST",
           headers: {
             Accept: "application/json",

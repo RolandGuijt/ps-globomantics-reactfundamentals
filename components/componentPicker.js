@@ -2,7 +2,7 @@ import navValues from "../helpers/navValues";
 import House from "./house";
 import HouseList from "./houseList";
 
-const ComponentSelector = ({ currentNavLocation }) => {
+const ComponentPicker = ({ currentNavLocation }) => {
   switch (currentNavLocation) {
     case navValues.home:
       return <HouseList />;
@@ -15,4 +15,4 @@ const ComponentSelector = ({ currentNavLocation }) => {
   }
 };
 
-export default ComponentSelector;
+export default ComponentPicker;

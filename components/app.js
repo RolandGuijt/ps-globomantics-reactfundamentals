@@ -1,7 +1,7 @@
 import Header from "../components/header";
 import navValues from "../helpers/navValues";
 import React, { useState } from "react";
-import ComponentSelector from "./componentSelector";
+import ComponentPicker from "./componentPicker";
 
 const NavigationContext = React.createContext({
   navState: { current: navValues.home },
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <NavigationContext.Provider value={{ navState: nav, navigate }}>
       <Header subtitle="Providing houses all over the world" />
-      <ComponentSelector currentNavLocation={nav.current} />
+      <ComponentPicker currentNavLocation={nav.current} />
     </NavigationContext.Provider>
   );
 };

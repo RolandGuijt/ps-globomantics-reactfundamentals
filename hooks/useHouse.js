@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import apiConfig from "../helpers/apiConfig";
 import loadingStates from "../helpers/loadingStates";
 
 const useHouse = (id) => {
@@ -10,13 +9,12 @@ const useHouse = (id) => {
     const fetchHouse = async () => {
       setLoadingState(loadingStates.isLoading);
       try {
-        const rsp = await fetch(`${apiConfig.url}/house/${id}`);
+        const rsp = await fetch(`/api/houses/${id}`);
         setHouse(await rsp.json());
         setLoadingState(loadingStates.loaded);
       } catch {
         setLoadingState(loadingStates.hasErrored);
       }
-      await new Promise((resolve) => setTimeout(resolve, 1000));
     };
     fetchHouse();
   }, [id]);

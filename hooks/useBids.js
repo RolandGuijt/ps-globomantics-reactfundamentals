@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import apiConfig from "../helpers/apiConfig";
 import loadingStates from "../helpers/loadingStates";
 
 const useBids = (houseId) => {
@@ -10,13 +9,12 @@ const useBids = (houseId) => {
     const fetchBids = async () => {
       setLoadingState(loadingStates.isLoading);
       try {
-        const rsp = await fetch(`${apiConfig.url}/house/${houseId}/bids`);
+        const rsp = await fetch(`/api/bids/${houseId}`);
         setBids(await rsp.json());
         setLoadingState(loadingStates.loaded);
       } catch {
         setLoadingState(loadingStates.hasErrored);
       }
-      await new Promise((resolve) => setTimeout(resolve, 1000));
     };
     fetchBids();
   }, [houseId]);

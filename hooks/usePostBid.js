@@ -1,10 +1,8 @@
-import apiConfig from "../helpers/apiConfig";
-
 const usePostBid = () => {
   return {
     post: (bid) => {
       const postBid = async () => {
-        await fetch(`${apiConfig.url}/house/${bid.houseId}/bids`, {
+        await fetch(`/api/bids/${bid.houseId}`, {
           method: "POST",
           headers: {
             Accept: "application/json",

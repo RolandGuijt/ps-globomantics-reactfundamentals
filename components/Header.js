@@ -2,7 +2,7 @@ import { useContext } from "react";
 import navValues from "../helpers/navValues";
 import { NavigationContext } from "./app";
 
-const Header = ({ subtitle }) => {
+const Header = ({ children }) => {
   const { navigate } = useContext(NavigationContext);
   return (
     <header className="row mb-4">
@@ -14,7 +14,7 @@ const Header = ({ subtitle }) => {
           onClick={() => navigate(navValues.home)}
         />
       </div>
-      <div className="col-7 mt-5 subtitle">{subtitle}</div>
+      {children}
     </header>
   );
 };

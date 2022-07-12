@@ -15,11 +15,7 @@ const App = () => {
 
   return (
     <NavigationContext.Provider value={{ navState: nav, navigate }}>
-      <Header>
-        <div className="col-7 mt-5 subtitle">
-          Providing houses all over the world
-        </div>
-      </Header>
+      <Header>Providing houses all over the world</Header>
       <ComponentPicker currentNavLocation={nav.current} />
     </NavigationContext.Provider>
   );
